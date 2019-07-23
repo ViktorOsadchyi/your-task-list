@@ -1,0 +1,5 @@
+export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
+export const CHANGE_ITEM_MARK = 'CHANGE_ITEM_MARK';
+export const FILTER_CATEGORY = 'FILTER_CATEGORY';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const ADD_ITEM = 'ADD_ITEM';

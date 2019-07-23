@@ -1,0 +1,15 @@
+.task-block__item {
+    display: flex;
+}
+
+.item__btn-block {
+    display: inline-flex;
+}
+
+.item-task {
+    display: flex;
+}
+
+.item-task__done {
+    text-decoration: line-through;
+}
