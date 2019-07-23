@@ -2,10 +2,14 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    padding: 15px 0;
 }
 
 .container-filter__btn-block {
     display: inline-flex;
-    margin-left: 20px;
+    margin: 0 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }

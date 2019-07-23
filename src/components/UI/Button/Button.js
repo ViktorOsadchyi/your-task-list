@@ -3,7 +3,7 @@ import React from 'react';
 import './Button.css';
 
 const button = (props) => {
-    const styleBtn = ['btn'];
+    const styleBtn = [`${props.styleElem}`, 'btn'];
     if (props.category === props.children.toLowerCase()) {
         styleBtn.push('active');
     }

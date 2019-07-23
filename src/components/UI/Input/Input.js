@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './Input.css';
+
 const input = (props) => {
     return (
-        <div>
+        <div className="container-input">
             <input 
                 type='text' 
                 placeholder={props.defaultText}

@@ -24,7 +24,8 @@ class Filter extends Component {
             return <Button 
                     key={name}
                     category={this.props.category}  
-                    clickedBtn={() => this.props.onClickedBtnHandler(name)}  
+                    clickedBtn={() => this.props.onClickedBtnHandler(name)} 
+                    styleElem="filter" 
                 >{name}</Button>
         });
         return (

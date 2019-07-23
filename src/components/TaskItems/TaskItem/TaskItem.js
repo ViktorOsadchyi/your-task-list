@@ -13,14 +13,16 @@ const taskItem = (props) => {
 
     return (
         <div className="task-block__item">
-            <span>{props.index+1}</span>
+            <span className="item-index">{props.index+1}.</span>
             <span
                 className={styleTask.join(' ')}
                 onClick={props.clicked}
-            >{props.children}</span>
+            >{props.children}!</span>
             <div className="item__btn-block">
-                <Button clickedBtn={props.clickedRemoveBtn}>X</Button>
-                <Button>Save</Button>
+                <Button 
+                    clickedBtn={props.clickedRemoveBtn}
+                    styleElem="items cancel">X</Button>
+                <Button styleElem="items">Save</Button>
             </div>
         </div>
     );

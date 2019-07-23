@@ -19,8 +19,11 @@ class TaskList extends Component {
         }, 0);
         return (
             <div className="container">
+                <div className="container__logo">
+                    <span>Your TODO List</span>
+                </div>
                 <Filter />
-                <div>
+                <div className="container__info-block">
                     <span>
                         <strong>{activeTask} </strong>
                         task need to be done
@@ -30,7 +33,7 @@ class TaskList extends Component {
                         task done
                     </span>
                 </div>
-                <div className="test">
+                <div className="container__list-items">
                     <TaskItems 
                         taskArray={this.props.taskArray}
                         searchVal={this.props.value}
@@ -39,7 +42,7 @@ class TaskList extends Component {
                         clickedRemoveBtn={id => this.props.onRemoveItemHandler(id)}
                     />
                 </div>
-                <div>
+                <div className="container__add-item">
                     <TaskCreator />
                 </div>
             </div>

@@ -1,5 +1,54 @@
+.btn {
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #23c328a8;
+    color: #fff;    
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+}
 
+.cancel {
+    background-color: #ff000099;
+    border: 1px solid red;
+    margin-right: 10px;
+}
 
-.active {
+.items.cancel:hover {
     background-color: red;
+}
+
+.items.cancel:active {
+    background-color: #b90303;
+}
+
+.btn:hover {
+    box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.24);
+    background-color: #23c328;
+}
+
+.btn:active {
+    background-color: #3e8e41;
+    box-shadow: 2px 2px #666;
+    transform: translateY(2px);
+}
+
+.btn button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.filter {
+    padding: 7px 35px;
+    margin: 5px;
+}
+
+.filter.btn.active {
+    background-color: #23c328;
+}
+
+.items.btn {
+    padding: 5px 10px;
 }

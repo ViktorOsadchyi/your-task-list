@@ -1,0 +1,31 @@
+.container-input {
+    display: flex;
+    min-width: 150px;
+    width: 300px;
+}
+
+.container-input input {
+    width: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.container-input input:focus {
+    outline: none;
+    background-color: #ccc;
+}
+
+.container-input .invalid {
+    border-color: red;
+    background-color: #f7020242;
+}
+
+.container-input .invalid::after{
+
+}

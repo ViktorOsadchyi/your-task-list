@@ -1,0 +1,73 @@
+.items-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto 0;
+}
+
+.items-form .input {
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #ff000099;
+    color: #fff;    
+    border: 1px solid red;
+    cursor: pointer;
+    outline: none;
+}
+
+.items-form .input:hover {
+    box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.24);
+    background-color: red;
+}
+
+.items-form .input:active {
+    background-color: #b90303;
+    box-shadow: 2px 2px #666;
+    transform: translateY(2px);
+}
+
+.item-form__task-name,
+.item-form__priopity {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.item-form__task-name label,
+.item-form__priopity label {
+    margin-right: 15px;
+    align-self: center;
+    align-self: center;
+    flex-grow: 1;
+}
+
+.item-form__task-name div,
+.item-form__priopity div {
+    flex-grow: 2;
+}
+
+.item-form__task-name label::after {
+    color: red;
+    content: " *";
+}
+
+.item-form__task-name {
+    
+}
+
+.item-form__form__priopity {
+
+}
+
+.item-form__btn-block {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.item-form__btn-block *:nth-child(n){
+    margin: 0 10px;
+    padding: 7px 35px
+}

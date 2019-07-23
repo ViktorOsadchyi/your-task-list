@@ -1,13 +1,33 @@
 .task-block__item {
-    display: flex;
+    display: flex; 
+    margin: 2px 0;
+    border: 1.5px solid #ccccccb0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.item-index {
+    width: 4%;
+    padding: 0 5px;
+    text-align: center;
+    align-self: center;
 }
 
 .item__btn-block {
     display: inline-flex;
+    width: 28%;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .item-task {
-    display: flex;
+    display: block;
+    width: 68%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    align-self: center;
+    font-style: italic;
 }
 
 .item-task__done {
