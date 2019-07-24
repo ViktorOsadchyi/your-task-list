@@ -28,14 +28,16 @@ class TaskCreator extends Component {
 
     onChandePriorityHandler = (event) => {
         const priority = event.target.value;
+
         const isNumber = this.isNumeric(priority) 
             && priority > 0 && priority%1 === 0;
-
+        console.log("is Numeric: " + isNumber);
         priority === ''
             ? this.setState({ isNum: true })
             : this.setState({ isNum: isNumber });
         
         this.setState({priority: priority});
+
     }
 
     onClearForm = () => {
@@ -48,15 +50,15 @@ class TaskCreator extends Component {
 
     submitHandler = () => {
         event.preventDefault();
-
+        
         this.setState(this.state.inputValue
             ? this.state.isNum
                 ? {isTask: true}
                 : {priority: ''}
             : {isTask: false, inputValue: '', priority: ''});
-        
+            
         if (!this.props.error) {
-            if (this.state.inputValue) {
+            if (this.state.inputValue && this.state.isNum) {
                 this.props.onAddItem(this.state.inputValue, 
                                     this.state.priority);
                 this.setState({inputValue: '', priority: ''});

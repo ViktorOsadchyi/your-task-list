@@ -9,7 +9,7 @@ const navigationItem = ( props ) => {
     return (
         <ul className="item-list">
             <NavigationItem
-                style="list-item active"
+                styleProp="list-item active"
             >TODO</NavigationItem>
             <NavigationItem
                 style={styleItem}

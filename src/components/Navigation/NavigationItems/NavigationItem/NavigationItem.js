@@ -4,7 +4,7 @@ import './NavigationItem.css';
 
 const navigationItem = ( props ) => (
     <li 
-        className={props.style}
+        className={props.styleProp}
     >{props.children}</li>
 );
 
