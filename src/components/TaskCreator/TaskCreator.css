@@ -53,12 +53,10 @@
     content: " *";
 }
 
-.item-form__task-name {
-    
-}
-
-.item-form__form__priopity {
-
+.item-form__priopity.invalid input,
+.item-form__task-name.invalid input {
+    background-color: #ff00007a;
+    border-color: red;
 }
 
 .item-form__btn-block {

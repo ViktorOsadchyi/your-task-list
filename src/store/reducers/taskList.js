@@ -55,22 +55,22 @@ const removeItem = (state, action) => {
 const addItem = (state, action) => {
     const updateTaskArray = [...state.taskArray];
     let newItem;
-
-    if (action.priority && action.priority > 0) {
+    
+    if (action.priority > 0) {
         newItem = {
             ...updateTaskArray[updateTaskArray.length-1],
             id: action.priority > (updateTaskArray.length - 1)
                 ? updateTaskArray.length
-                : action.priority-1,
+                : action.priority,
             task: action.task,
             done: false
         };
         updateTaskArray.map(item => 
-            item.id < action.priority-1
+            item.id < action.priority
             ? item.id
             : item.id += 1
         )
-        updateTaskArray.splice(action.priority-1, 0, newItem);
+        updateTaskArray.splice(action.priority, 0, newItem);
     } else {
         newItem = {
             ...updateTaskArray[updateTaskArray.length-1],
@@ -80,8 +80,6 @@ const addItem = (state, action) => {
         };
         updateTaskArray.push(newItem);
     }
-
-    console.log(updateTaskArray);
   
     return {
         ...state,
