@@ -12,7 +12,7 @@ const navigationItem = ( props ) => {
                 styleProp="list-item active"
             >TODO</NavigationItem>
             <NavigationItem
-                style={styleItem}
+                styleProp={styleItem}
             >Authenticate</NavigationItem>
         </ul>
     );
