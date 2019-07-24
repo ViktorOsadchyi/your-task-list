@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     value: '',
-    taskArray: [],
+    taskArray: null,
     category: 'all',
     errorInit: false
 };
@@ -57,16 +57,16 @@ const addItem = (state, action) => {
             ...updateTaskArray[updateTaskArray.length-1],
             id: action.priority > (updateTaskArray.length - 1)
                 ? updateTaskArray.length
-                : action.priority,
+                : action.priority - 1,
             task: action.task,
             done: false
         };
         updateTaskArray.map(item => 
-            item.id < action.priority
+            item.id < action.priority - 1
             ? item.id
             : item.id += 1
         )
-        updateTaskArray.splice(action.priority, 0, newItem);
+        updateTaskArray.splice(action.priority-1, 0, newItem);
     } else {
         newItem = {
             ...updateTaskArray[updateTaskArray.length-1],

@@ -33,6 +33,7 @@
     justify-content: space-between;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .item-form__task-name label,
@@ -68,4 +69,39 @@
 .item-form__btn-block *:nth-child(n){
     margin: 0 10px;
     padding: 7px 35px
+}
+
+.error_box {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30%;
+    transform: translate(0, -10px);
+    color: red;
+    font-style: italic;
+}
+
+.error_box.hidden {
+    visibility: hidden;
+    height: 0;
+    
+}
+
+.error_box.visible {
+    opacity: 1;
+    animation: errorMsg 0.8s ease-in;
+}
+
+@keyframes errorMsg {
+    from {
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 1;
+    }
 }

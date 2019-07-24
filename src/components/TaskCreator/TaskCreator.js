@@ -10,7 +10,7 @@ import './TaskCreator.css';
 class TaskCreator extends Component {
     state = {
         inputValue: '',
-        priority: null,
+        priority: '',
         isNum: true,
         isTask: true
     }
@@ -35,33 +35,39 @@ class TaskCreator extends Component {
             ? this.setState({ isNum: true })
             : this.setState({ isNum: isNumber });
         
-        this.setState(isNumber 
-            ? {priority: priority - 1}
-            : {priority: null});
+        this.setState({priority: priority});
     }
 
     onClearForm = () => {
         this.setState({
             inputValue: '',
-            priority: null,
+            priority: '',
             isNum: true
         });
     }
 
     submitHandler = () => {
         event.preventDefault();
-        if (this.state.isNum && this.state.inputValue) {
-            this.props.onAddItem(this.state.inputValue, 
-                                    this.state.priority)
-        }
+
         this.setState(this.state.inputValue
-            ? {isTask: true}
-            : {isTask: false});
+            ? this.state.isNum
+                ? {isTask: true}
+                : {priority: ''}
+            : {isTask: false, inputValue: '', priority: ''});
+        
+        if (!this.props.error) {
+            if (this.state.inputValue) {
+                this.props.onAddItem(this.state.inputValue, 
+                                    this.state.priority);
+                this.setState({inputValue: '', priority: ''});
+            }
+        }
     }
 
     render () {
         const styleInputPri = ['item-form__priopity'];
-        const styleInputVal = ['item-form__task-name']
+        const styleInputVal = ['item-form__task-name'];
+        const styleError = ['error_box'];
 
         if (!this.state.isNum) {
             styleInputPri.push('invalid');
@@ -70,6 +76,10 @@ class TaskCreator extends Component {
         styleInputVal.push(!this.state.isTask
             ? 'invalid'
             : '');
+        
+            styleError.push(this.state.isTask
+                ? 'hidden'  
+                : 'visible');
 
         return (
             <form onSubmit={this.submitHandler} className="items-form">
@@ -78,13 +88,19 @@ class TaskCreator extends Component {
                     <Input 
                         defaultText='What neet to be done'
                         changeInput={(e) => this.onChandeHandler(e)}
+                        value={this.state.inputValue}
                     />
+                    
                 </div>
+                <span className={styleError.join(' ')}>
+                    Please, input task!
+                </span>
                 <div className={styleInputPri.join(' ')}>
                     <label>Task priority</label>
                     <Input 
                         defaultText='Task priority'
                         changeInput={(e) => this.onChandePriorityHandler(e)}
+                        value={this.state.priority}
                     />
                 </div>
                 <div className="item-form__btn-block">
@@ -104,10 +120,16 @@ class TaskCreator extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        error: state.errorInit
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onAddItem: (task, priority) => dispatch(actions.addItem(task, priority))
     }
 }
 
-export default connect(null, mapDispatchToProps)(TaskCreator);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskCreator);
