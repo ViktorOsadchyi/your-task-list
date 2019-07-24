@@ -1,3 +1,4 @@
+
 import * as actionTypes from './actionTypes';
 
 export const changeSearchValue = (val) => {
@@ -35,3 +36,22 @@ export const addItem = (task, priority) => {
         priority: priority
     }
 }
+
+export const setTask = ( tasks ) => {
+    return {
+        type: actionTypes.SET_TASK,
+        taskArray: tasks
+    }
+}
+
+export const fetchTaskFail = () => {
+    return {
+        type: actionTypes.SET_TASK_FAIL
+    }
+}
+
+export const initTask = () => {
+    return {
+        type: actionTypes.TASK_LIST_INIT
+    };
+};

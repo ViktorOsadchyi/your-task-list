@@ -9,6 +9,9 @@ import * as actions from '../../store/actions/index';
 import './TaskList.css';
 
 class TaskList extends Component {
+    componentDidMount() {
+        this.props.onInitTask();
+    }
     
     render () {
         const activeTask = this.props.taskArray.reduce((coundDone, item) =>{
@@ -19,9 +22,6 @@ class TaskList extends Component {
         }, 0);
         return (
             <div className="container">
-                <div className="container__logo">
-                    <span>Your TODO List</span>
-                </div>
                 <Filter />
                 <div className="container__info-block">
                     <span>
@@ -54,14 +54,16 @@ const mapStateToProps = state => {
     return {
         value: state.value,
         taskArray: state.taskArray,
-        category: state.category
+        category: state.category,
+        error: state.errorInit
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onClickedItem: id => dispatch(actions.markItemDone(id)),
-        onRemoveItemHandler: id => dispatch(actions.removeItem(id))
+        onRemoveItemHandler: id => dispatch(actions.removeItem(id)),
+        onInitTask: () => dispatch(actions.initTask())
     };
 };
 

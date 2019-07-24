@@ -1,0 +1,13 @@
+.container-logo {
+    display: inline-flex;
+}
+
+.container-logo span {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: capitalize;
+    color: #fff;
+    text-shadow: 5px 1px #0000004d;
+}

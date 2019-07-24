@@ -2,13 +2,9 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     value: '',
-    taskArray: [
-        {id: 0, task: 'Morning work-out', done: false},
-        {id: 1, task: 'Have breakfast', done: false},
-        {id: 2, task: 'Have lunch', done: false},
-        {id: 3, task: 'Have dinner', done: false}
-    ],
-    category: 'all'
+    taskArray: [],
+    category: 'all',
+    errorInit: false
 };
 
 const changeSearchValue = (state, action) => {
@@ -87,6 +83,20 @@ const addItem = (state, action) => {
     }
 }
 
+const setTask = (state, action) => {
+    return {
+        ...state,
+        taskArray: action.taskArray
+    }
+}
+
+const setTaskFail = (state, action) => {
+    return {
+        ...state,
+        errorInit: true
+    }
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.CHANGE_SEARCH_VALUE: 
@@ -99,6 +109,10 @@ const reducer = (state = initialState, action) => {
             return removeItem(state, action);
         case actionTypes.ADD_ITEM:
             return addItem(state, action);
+        case actionTypes.SET_TASK:
+            return setTask(state, action);
+        case actionTypes.SET_TASK_FAIL:
+            return setTaskFail(state, action);
         default: return state;
     }
 };
