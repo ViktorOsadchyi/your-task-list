@@ -1,0 +1,6 @@
+
+
+.item__lable.important::after {
+    color: red;
+    content: " *";
+}

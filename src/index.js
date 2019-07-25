@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+//import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
@@ -24,7 +25,9 @@ sagaMiddleware.run(watcherTaskList);
 
 const app = (
   <Provider store={store}>
-    <App />
+    {/*<BrowserRouter>*/}
+      <App />
+    {/*</BrowserRouter>*/}
   </Provider>
 )
 
