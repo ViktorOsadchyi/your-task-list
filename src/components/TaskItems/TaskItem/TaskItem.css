@@ -33,3 +33,29 @@
 .item-task__done {
     text-decoration: line-through;
 }
+
+.item-task__important {
+    font-weight: bold;
+    color: blue;
+}
+
+@media (max-width: 501px) {
+    .task-block__item {
+        flex-wrap: wrap;
+    }   
+    .task-block__item span:nth-child(1) {
+        width: 10%;
+    }
+    .task-block__item span:nth-child(2) {
+        width: 80%;
+    }
+    .item__btn-block {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .item__btn-block button:nth-child(1),
+    .item__btn-block button:nth-child(2) {
+        padding: 5px 25px;
+    }
+}

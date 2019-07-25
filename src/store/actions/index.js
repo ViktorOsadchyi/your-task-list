@@ -3,8 +3,8 @@ export {
     markItemDone,
     changeCategory,
     removeItem,
-    addItem,
     initTask,
     fetchTaskFail,
-    setTask
+    setTask,
+    addItem,setImportantItem
 } from './taskList';

@@ -10,6 +10,35 @@
     outline: none;
 }
 
+.btn:disabled,
+.btn:disabled:hover {
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.24);
+    box-shadow: none;
+}
+
+.task-creator:disabled {
+    animation: btnCreateItem 0.5s ease-in-out;
+}
+
+@keyframes btnCreateItem {
+    from {
+        transform: scale(1.05); 
+    }
+    25%{
+        transform: scale(1.15);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    75%{
+        transform: scale(1.15);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 .cancel {
     background-color: #ff000099;
     border: 1px solid red;
@@ -52,3 +81,10 @@
 .items.btn {
     padding: 5px 10px;
 }
+
+@media (max-width: 700px) {
+    .filter.btn {
+        width: 150px;
+    }
+}
+

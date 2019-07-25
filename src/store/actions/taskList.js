@@ -29,14 +29,6 @@ export const removeItem = id => {
     };
 };
 
-export const addItem = (task, priority) => {
-    return {
-        type: actionTypes.ADD_ITEM,
-        task: task,
-        priority: priority
-    }
-}
-
 export const setTask = ( tasks ) => {
     return {
         type: actionTypes.SET_TASK,
@@ -55,3 +47,18 @@ export const initTask = () => {
         type: actionTypes.TASK_LIST_INIT
     };
 };
+
+export const addItem = (task, priority) => {
+    return {
+        type: actionTypes.ADD_ITEM,
+        task: task,
+        priority: priority
+    }
+}
+
+export const setImportantItem = ( id ) => {
+    return {
+        type: actionTypes.SET_IMPORTANT_ITEM,
+        id: id
+    }
+}

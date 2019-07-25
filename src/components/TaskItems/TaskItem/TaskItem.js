@@ -11,6 +11,10 @@ const taskItem = (props) => {
         styleTask.push('item-task__done');
     }
 
+    if (props.important) {
+        styleTask.push('item-task__important');
+    }
+
     return (
         <div className="task-block__item">
             <span className="item-index">{props.index+1}.</span>
@@ -22,8 +26,16 @@ const taskItem = (props) => {
                 <Button 
                     clickedBtn={props.clickedRemoveBtn}
                     styleElem="items cancel">X</Button>
-                <Button styleElem="items">Save</Button>
-            </div>
+                <Button
+                    clickedBtn={props.clickedSave}
+                    styleElem="items">
+                        {
+                            props.important
+                                ? 'Unsave'
+                                : 'Save'
+                        }
+                    </Button>
+            </div> 
         </div>
     );
 }

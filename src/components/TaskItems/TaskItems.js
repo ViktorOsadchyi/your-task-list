@@ -21,21 +21,28 @@ const taskItems = (props) => {
             .indexOf(props.searchVal.toLowerCase()) > -1
             ? 
                 <TaskItem
-                    key={item.id}
+                    key={item.id} 
                     index={i}
                     id={item.id}
                     done={item.done}
+                    important={item.important}
                     clicked={id => props.clicked(item.id)}
                     clickedRemoveBtn={() => props.clickedRemoveBtn(item.id)}
+                    clickedSave={() => props.clickedSave(item.id)}
                 >{item.task}</TaskItem>
             : null;
     });
+    let taskBlock = <p>There are no tasks in this category yet.</p>;
+    
+    if (itemsArray.length !== 0) {
+        taskBlock = (
+            <ul className="task-block">
+                {itemsArray}
+            </ul>
+        );
+    }
 
-    return (
-        <ul className="task-block">
-            {itemsArray}
-        </ul>
-    );
+    return taskBlock;
 };
 
 export default taskItems;

@@ -4,7 +4,8 @@ const initialState = {
     value: '',
     taskArray: null,
     category: 'all',
-    errorInit: false
+    errorInit: false,
+    loading: false
 };
 
 const changeSearchValue = (state, action) => {
@@ -59,7 +60,8 @@ const addItem = (state, action) => {
                 ? updateTaskArray.length
                 : action.priority - 1,
             task: action.task,
-            done: false
+            done: false,
+            important: false
         };
         updateTaskArray.map(item => 
             item.id < action.priority - 1
@@ -72,7 +74,8 @@ const addItem = (state, action) => {
             ...updateTaskArray[updateTaskArray.length-1],
             id: updateTaskArray[updateTaskArray.length-1].id + 1,
             task: action.task,
-            done: false
+            done: false,
+            important: false
         };
         updateTaskArray.push(newItem);
     }
@@ -80,20 +83,33 @@ const addItem = (state, action) => {
     return {
         ...state,
         taskArray: updateTaskArray
-    }
-}
+    };
+};
 
 const setTask = (state, action) => {
     return {
         ...state,
         taskArray: action.taskArray
-    }
-}
+    };
+};
 
 const setTaskFail = (state, action) => {
     return {
         ...state,
         errorInit: true
+    };
+};
+
+const setImportantItem = (state, action) => {
+    const updateTaskArray = [...state.taskArray];
+    updateTaskArray.map(item => {
+        return item.id === action.id 
+            ? item.important = !item.important 
+            : item;
+    });
+    return {
+        ...state,
+        taskArray: updateTaskArray
     }
 }
 
@@ -113,6 +129,8 @@ const reducer = (state = initialState, action) => {
             return setTask(state, action);
         case actionTypes.SET_TASK_FAIL:
             return setTaskFail(state, action);
+        case actionTypes.SET_IMPORTANT_ITEM:
+            return setImportantItem(state, action);
         default: return state;
     }
 };

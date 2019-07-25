@@ -1,0 +1,42 @@
+.sideDrawer-menu {
+    position: relative;
+    border-top: 2px solid rgba(0,0,0,0.8);
+}
+
+.sideDrawer {
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    width: 100%;
+}
+
+.sideDrawer.open {
+    display: flex;
+}
+
+.sideDrawer.close {
+    display: none;
+}
+
+.sideDrawer nav {
+    width: 100%;
+}
+
+.sideDrawer nav ul {
+    flex-direction: column;
+    align-items: center;
+}
+
+.sideDrawer nav ul li {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sideDrawer nav ul li.active {
+    background-image: none;
+}
+
+.sideDrawer nav ul li:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0px;
+}

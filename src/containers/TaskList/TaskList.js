@@ -38,6 +38,7 @@ class TaskList extends Component {
                     category={this.props.category}
                     clicked={id => this.props.onClickedItem(id)}
                     clickedRemoveBtn={id => this.props.onRemoveItemHandler(id)}
+                    clickedSave={id => this.props.onSaveItem(id)}
                 />
             );
 
@@ -84,7 +85,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onClickedItem: id => dispatch(actions.markItemDone(id)),
         onRemoveItemHandler: id => dispatch(actions.removeItem(id)),
-        onInitTask: () => dispatch(actions.initTask())
+        onInitTask: () => dispatch(actions.initTask()),
+        onSaveItem: id => dispatch(actions.setImportantItem(id))
     };
 };
 

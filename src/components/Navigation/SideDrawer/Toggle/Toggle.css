@@ -1,0 +1,54 @@
+.toggleBar {
+    width: 40px;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column;
+        flex-flow: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-align: center;
+        align-items: center;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggleBar div {
+    width: 90%;
+    height: 7px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    transition: .25s ease-in-out;
+}
+
+.toggleBar div:nth-child(1) {
+    top: 0
+}
+
+.toggleBar div:nth-child(4) {
+    bottom: 0
+}
+
+@media (min-width: 700px) {
+    .toggleBar {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .menu_min div:nth-child(1),
+    .menu_min div:nth-child(4) {
+        width: 0;
+    }
+
+    .menu_min div:nth-child(2) {
+        transform: rotate(45deg);
+    }
+
+    .menu_min div:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+}

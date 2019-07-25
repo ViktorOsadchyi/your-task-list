@@ -59,3 +59,9 @@
     border-bottom: 2px solid #b9b9b970;
     margin-top: 10px;
 }
+
+@media (max-width: 700px) {
+    .container {
+        width: 90%;
+    }
+}

@@ -31,7 +31,6 @@ class TaskCreator extends Component {
 
         const isNumber = this.isNumeric(priority) 
             && priority > 0 && priority%1 === 0;
-        console.log("is Numeric: " + isNumber);
         priority === ''
             ? this.setState({ isNum: true })
             : this.setState({ isNum: isNumber });
@@ -60,7 +59,7 @@ class TaskCreator extends Component {
         if (!this.props.error) {
             if (this.state.inputValue && this.state.isNum) {
                 this.props.onAddItem(this.state.inputValue, 
-                                    this.state.priority);
+                        this.state.priority, this.props.taskArray);
                 this.setState({inputValue: '', priority: ''});
             }
         }
@@ -109,6 +108,7 @@ class TaskCreator extends Component {
                     <Button
                         clickedBtn={() => this.submitHandler}
                         styleElem="task-creator"
+                        disabled={!(this.state.isNum && this.state.isTask)}
                     >Add</Button>
                     <input
                         className="input"
@@ -124,13 +124,14 @@ class TaskCreator extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.errorInit
+        error: state.errorInit,
+        taskArray: state.taskArray
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddItem: (task, priority) => dispatch(actions.addItem(task, priority))
+        onAddItem: (task, priority, items) => dispatch(actions.addItem(task, priority, items))
     }
 }
 

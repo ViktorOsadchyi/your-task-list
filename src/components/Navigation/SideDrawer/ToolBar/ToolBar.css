@@ -3,6 +3,7 @@
     width: 100%;
     background-color: #00000057;
     padding: 15px 0;
+    background: rgba(0,0,0,0.6);
 }
 
 .nav-bar {
@@ -22,4 +23,13 @@
 .nav-bar__nav {
     display: flex;
     margin-right: 5%;
+}
+
+@media (max-width: 699px) {
+    .only-descktop {
+        display: none;
+    }
+    .nav-bar {
+        justify-content: space-around;
+    }
 }

@@ -11,5 +11,7 @@
     cursor: pointer;
     color: #fff;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 3px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
