@@ -11,6 +11,7 @@
 
 .sideDrawer.open {
     display: flex;
+    z-index: 100;
 }
 
 .sideDrawer.close {

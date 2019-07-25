@@ -9,14 +9,20 @@ import './Filter.css';
 
 class Filter extends Component {
 
+    state = {
+        isOpenBtnBlock: false
+    }
+
     onChangeInputHandler = (event) => {
         const textInput = event.target.value;
         this.props.onChangeHandler(textInput);
     }
 
-    /*onClickedBtnHandler = (name) => {
-        console.log(name);
-    }*/
+    openBtnBlock = () => {
+        this.setState(prevState => {
+            return {isOpenBtnBlock: !prevState.isOpenBtnBlock}
+        })
+    }
 
     render () {
         const nameBtn = ['All', 'Active', 'Done'];
@@ -28,6 +34,12 @@ class Filter extends Component {
                     styleElem="filter" 
                 >{name}</Button>
         });
+
+        let styleBtnBlock = ['btn-block', 'close'];
+        if (this.state.isOpenBtnBlock) {
+            styleBtnBlock = ['btn-block', 'open'];
+        }
+
         return (
             <div className="container-filter">
                 <Input 
@@ -36,7 +48,18 @@ class Filter extends Component {
                     value={this.props.value}
                 />
                 <div className="container-filter__btn-block">
-                    {btnBlock}
+                    <div className="filter__control-btn">
+                        <Button
+                            clickedBtn={this.openBtnBlock}>
+                            {`${
+                                this.state.isOpenBtnBlock
+                                    ? 'Close' : 'Open'
+                            } category`}
+                        </Button>
+                    </div>
+                    <div className={styleBtnBlock.join(' ')}>
+                        {btnBlock}
+                    </div>
                 </div>
             </div>
         );
