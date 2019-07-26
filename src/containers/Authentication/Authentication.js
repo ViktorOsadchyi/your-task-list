@@ -73,7 +73,7 @@ class Auth extends Component {
         }
 
         let form = fromElementArray.map(elem => (
-            <div className="form-block__item">
+            <div className="form-block__item" key={`div${elem.id}`}>
                 <label className={ elem.config.validation.required
                     ? 'item__lable important' 
                     : 'item__lable'}>
