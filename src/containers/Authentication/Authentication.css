@@ -1,6 +1,78 @@
+.form-block {
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 3px 2px #ccc;
+}
+
+.form-block__title {
+    font-family: sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
 
 .item__lable.important::after {
     color: red;
     content: " *";
+}
+
+.form-block__item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.form-block__item label {
+    margin-bottom: 4px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.form-block__item div {
+    width: 100%;
+}
+
+.item__lable {
+    align-self: flex-start;
+}
+
+.form-block__btns {
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.form-block__btns button,
+.form-block__btns input {
+    width: 120px;
+    padding: 7px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: transparent;
+    box-shadow: 0 0 2px;
+    border: 1px solid #000;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-block__btns button:hover,
+.form-block__btns input:hover {
+    background-color: #c7c7c7;
+    box-shadow: 0 0 5px;
+}
+
+@media (min-width: 600px) {
+    .form-block {
+        width: 500px;
+    }
 }

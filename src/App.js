@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 //import { connect } from 'react-redux';
 
 import TaskList from './containers/TaskList/TaskList';
@@ -13,19 +13,20 @@ import './App.css';
 class App extends Component {
 
   render() {
-    /*let routers = (
+    let routers = (
       <Switch>
         <Route path="/" exact component={TaskList} />
+        <Route path="/auth" exact component={Auth} />
       </Switch>
-    );*/
+    );
 
     return (
       <div>
         <Layout>
-          {/*routers*/}
-          <TaskList />
-          <Auth />
-        </Layout>
+          {routers}
+          {/*<TaskList />
+          <Auth />*/}
+          </Layout>
       </div>
     );
   }

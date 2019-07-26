@@ -7,7 +7,7 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 class Layout extends Component { 
 
     state = {
-        showSideDrawer: false
+        showSideDrawer: false 
     }
 
     sideDwawerClosedHandler = () => {
@@ -45,7 +45,9 @@ class Layout extends Component {
                     showDrawer={this.state.showSideDrawer}
                     drawerToggleClicked={this.sideDrawerToggleHandler}
                 />
-                <SideDrawer open={this.state.showSideDrawer} />
+                <SideDrawer 
+                    open={this.state.showSideDrawer}
+                    drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <div>
                     {this.props.children}
                 </div>

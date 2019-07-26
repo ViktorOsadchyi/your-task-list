@@ -7,11 +7,17 @@
 
 .item-list li {
     margin: 0 5px;
-    font-size: 20px;
     cursor: pointer;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.item-list li a {
+    font-size: 20px;
     color: #fff;
     font-weight: bold;
-    border-radius: 3px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    text-decoration: none !important;
+    width: 100%;
+    text-align: center;
 }

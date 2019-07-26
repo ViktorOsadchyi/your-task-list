@@ -1,10 +1,10 @@
 .sideDrawer-menu {
     position: relative;
-    border-top: 2px solid rgba(0,0,0,0.8);
+    border-top: 2px solid rgba(0,0,0,0.9);
 }
 
 .sideDrawer {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.8);
     position: absolute;
     width: 100%;
 }
@@ -30,7 +30,7 @@
 .sideDrawer nav ul li {
     padding: 15px 0;
     width: 100%;
-    text-align: center;
+    justify-content: center;
 }
 
 .sideDrawer nav ul li.active {
