@@ -17,7 +17,7 @@ const toolBar = ( props ) => (
                 <Logo />
             </div>
             <nav className="nav-bar__nav only-descktop">
-                <NavigationItems />
+                <NavigationItems /> 
             </nav>
         </div>
     </header>

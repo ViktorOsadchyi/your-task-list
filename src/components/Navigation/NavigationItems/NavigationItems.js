@@ -9,7 +9,7 @@ const navigationItem = ( props ) => {
     return (
         <ul className="item-list"> 
             <NavigationItem
-                styleProp="list-item active"
+                styleProp="list-item" 
                 link="/" exact
                 clicked={props.clicked}
             >TODO</NavigationItem>

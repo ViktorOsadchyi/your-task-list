@@ -3,9 +3,9 @@
     margin: 30px auto;
     text-align: center;
     box-sizing: border-box;
-    padding: 15px;
+    padding: 20px;
     border: 1px solid #ccc;
-    box-shadow: 3px 2px #ccc;
+    box-shadow: 3px 3px #ccc;
 }
 
 .form-block__title {
@@ -63,6 +63,7 @@
     text-transform: uppercase;
     cursor: pointer;
     outline: none;
+    margin: 10px 0;
 }
 
 .form-block__btns button:hover,
@@ -74,5 +75,17 @@
 @media (min-width: 600px) {
     .form-block {
         width: 500px;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-block__btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-block__btns button,
+    .form-block__btns input {
+        width: 80%;
     }
 }
