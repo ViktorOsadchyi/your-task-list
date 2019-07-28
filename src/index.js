@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import App from './App';
-import reducer from './store/reducers/taskList';
-import { watcherTaskList } from './store/sagas/index';
+import taskListReducer from './store/reducers/taskList';
+import authReducer from './store/reducers/auth';
+import { watcherTaskList, watcherAuth } from './store/sagas/index';
 
 import './index.css';
 
@@ -17,10 +18,16 @@ const composeEnhancers = process.env.NODE_ENV === 'development'
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer, composeEnhancers(
+const rootReducer = combineReducers({
+    todo: taskListReducer,
+    auth: authReducer
+})
+
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(sagaMiddleware)
 ));
 
+sagaMiddleware.run(watcherAuth);
 sagaMiddleware.run(watcherTaskList);
 
 const app = (

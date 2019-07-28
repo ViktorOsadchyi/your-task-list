@@ -124,8 +124,8 @@ class TaskCreator extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.errorInit,
-        taskArray: state.taskArray
+        error: state.todo.errorInit,
+        taskArray: state.todo.taskArray
     }
 }
 

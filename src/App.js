@@ -24,9 +24,7 @@ class App extends Component {
       <div>
         <Layout>
           {routers}
-          {/*<TaskList />
-          <Auth />*/}
-          </Layout>
+        </Layout>
       </div>
     );
   }

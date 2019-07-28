@@ -33,7 +33,7 @@
     bottom: 0
 }
 
-@media (min-width: 700px) {
+@media (min-width: 701px) {
     .toggleBar {
         display: none;
     }

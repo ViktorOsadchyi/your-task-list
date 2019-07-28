@@ -68,8 +68,8 @@ class Filter extends Component {
 
 const mapStateToProps = state => {
     return {
-        value: state.value,
-        category: state.category
+        value: state.todo.value,
+        category: state.todo.category
     }
 }
 

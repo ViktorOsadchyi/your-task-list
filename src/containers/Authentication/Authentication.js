@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
+
+import * as action from '../../store/actions/index';
 
 import './Authentication.css';
 
 class Auth extends Component {
 
     state = {
-        isSignUp: true,
-        formIsValid: false,
         rules: {
             name: {
                 htmlTag: 'input',
@@ -56,7 +57,9 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        isSignUp: true,
+        formIsValid: false
     }
 
     checkValidity = (value, rules) => {
@@ -91,7 +94,9 @@ class Auth extends Component {
     }
 
     changeMethod = () => {
-        this.setState({isSignUp: !this.state.isSignUp})
+        this.setState(prevState => {
+            return {isSignUp: !prevState.isSignUp}
+        });
     }
 
     userHandler = () => {
@@ -106,7 +111,8 @@ class Auth extends Component {
                 : `user${Math.floor(Math.random() * (10000 - 1000) + 1000)}`;
         }
 
-        console.log(formData);
+        this.props.onAuth(this.state.rules.email.value, this.state.rules.password.value, this.state.isSignUp);
+        
     }
 
     inputChangedHandler = (event, inputId) => {
@@ -136,8 +142,6 @@ class Auth extends Component {
             formIsValid: formIsValid
         });
     }
-
-
 
     render () {
         const fromElementArray = [];
@@ -170,18 +174,65 @@ class Auth extends Component {
             </div>
         ));
 
+        if (this.props.loading) {
+            formElems = <Spinner />;
+        }
+
+        let errorMessage = null;
+
+        if (this.props.error) {
+            let textHeadError = this.props.error.message;
+            let textError = null;
+            switch(this.props.error.message) {
+                case 'EMAIL_EXISTS': 
+                    textHeadError = 'Email is exists';
+                    textError = 'The email address is already in use by another account.'
+                    break;
+                case 'EMAIL_NOT_FOUND':    
+                    textHeadError = 'Email not found';
+                    textError = 'There is no user record corresponding to this identifier. The user may have been deleted.'
+                    break;
+                case 'INVALID_PASSWORD':
+                    textHeadError = 'Invalid password';
+                    textError = 'The password is invalid or the user does not have a password.'
+                    break;
+                case 'USER_DISABLED':
+                    textHeadError = 'User disabled';
+                    textError = 'The user account has been disabled by an administrator.'
+                    break;
+                case 'INVALID_EMAIL': 
+                    textHeadError = 'Invalid email'
+                    textError = 'The email address is badly formatted.'
+                    break;
+                case 'MISSING_PASSWORD':
+                    textHeadError = 'You missing password'
+                    textError = 'Fill in the "password" to register an account.';
+                    break;
+                default:
+                    textHeadError = this.props.error.message;
+                    textError = this.props.error.message;
+            }
+            errorMessage = (
+                <div className='error-message'>
+                    <p>{textHeadError}</p>
+                    <p>{textError}</p>
+                </div>
+            );
+        }
+
         const title = this.state.isSignUp
             ? 'sign up'
             : 'sign in';
 
         return (
             <div className="form-block">
+                {errorMessage}
                 <form onSubmit={this.userHandler}>
                     <span className='form-block__title'>{title}</span>
                     {formElems}
                     <div className="form-block__btns">
                         <Button
-                            disabled={!this.state.formIsValid}
+                            /*disabled={!this.state.formIsValid}*/
                         >SUBMIT</Button>
                         <input 
                             type='button' 
@@ -195,4 +246,17 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignUp) => dispatch(action.auth(email, password, isSignUp))
+    }
+};
+
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

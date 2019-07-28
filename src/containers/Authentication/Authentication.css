@@ -72,6 +72,14 @@
     box-shadow: 0 0 5px;
 }
 
+.error-message {
+    color: red;
+}
+
+.error-message p:first-child {
+    font-weight: bold;
+}
+
 @media (min-width: 600px) {
     .form-block {
         width: 500px;

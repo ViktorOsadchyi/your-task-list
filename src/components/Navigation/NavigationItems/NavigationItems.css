@@ -25,12 +25,12 @@
     
 }
 
-.item-list li:nth-child(2n+1) {
-    border-bottom: 1px solid #000;
-}
-
 @media (max-width: 700px) {
     .item-list li a {
         margin: 15px 0;
+    }
+
+    .item-list li:nth-child(2n+1) {
+        border-bottom: 1px solid #000;
     }
 }

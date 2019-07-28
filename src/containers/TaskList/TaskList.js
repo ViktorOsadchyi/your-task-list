@@ -74,10 +74,10 @@ class TaskList extends Component {
 
 const mapStateToProps = state => {
     return {
-        value: state.value,
-        taskArray: state.taskArray,
-        category: state.category,
-        error: state.errorInit
+        value: state.todo.value,
+        taskArray: state.todo.taskArray,
+        category: state.todo.category,
+        error: state.todo.errorInit
     };
 };
 

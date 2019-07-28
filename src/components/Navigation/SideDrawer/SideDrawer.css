@@ -41,3 +41,9 @@
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0px;
 }
+
+@media (min-width: 701px) {
+    .sideDrawer-menu {
+        display: none;
+    }
+}
