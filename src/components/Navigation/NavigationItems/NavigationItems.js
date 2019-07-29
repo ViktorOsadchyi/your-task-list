@@ -4,7 +4,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import './NavigationItems.css';
 
-const navigationItem = ( props ) => {
+const navigationItems = ( props ) => {
     const styleItem = ['list-item'];
     return (
         <ul className="item-list"> 
@@ -13,13 +13,30 @@ const navigationItem = ( props ) => {
                 link="/" exact
                 clicked={props.clicked}
             >TODO</NavigationItem>
-            <NavigationItem
-                styleProp={styleItem}
-                link="/auth"
-                clicked={props.clicked}
-            >Authenticate</NavigationItem>
+            {
+                props.isAuth
+                    ? (
+                        <NavigationItem
+                            styleProp={styleItem}
+                            link="/logout"
+                            clicked={props.clicked}
+                        >Logout</NavigationItem>
+                    )
+                    : null
+            }
+            {
+                !props.isAuth
+                    ? (
+                        <NavigationItem
+                            styleProp={styleItem}
+                            link="/auth"
+                            clicked={props.clicked}
+                        >Authenticate</NavigationItem>
+                    )
+                    : null
+            }
         </ul>
     );
 };
 
-export default navigationItem;
+export default navigationItems;

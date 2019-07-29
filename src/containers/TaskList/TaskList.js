@@ -11,7 +11,8 @@ import './TaskList.css';
 
 class TaskList extends Component {
     componentDidMount() {
-        this.props.onInitTask();
+        if (!this.props.isAuth)
+            this.props.onInitTask();
     }
     
     render () {
@@ -19,9 +20,9 @@ class TaskList extends Component {
             ? <p>Task List can't be loaded!</p>
             : <Spinner />;
         
-            let infoBlock = this.props.error
-                ? null
-                : <span>Loading...</span>;
+        let infoBlock = this.props.error
+            ? null
+            : <span>Loading...</span>;
 
         if (this.props.taskArray) {
             const activeTask = this.props.taskArray.reduce((coundDone, item) =>{
@@ -77,7 +78,8 @@ const mapStateToProps = state => {
         value: state.todo.value,
         taskArray: state.todo.taskArray,
         category: state.todo.category,
-        error: state.todo.errorInit
+        error: state.todo.errorInit,
+        isAuth: state.auth.token !== null
     };
 };
 

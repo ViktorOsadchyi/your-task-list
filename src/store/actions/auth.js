@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
-    return {
+    return { 
         type: actionTypes.AUTH_START
     };
 };
@@ -23,9 +23,15 @@ export const authError = (error) => {
 
 export const logout = () => {
     return {
-        type: actionTypes.AUTH_LOGOUT
+        type: actionTypes.AUTH_INIT_LOGOUT
     };
 };
+
+export const logoutSuccess = () => {
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    }
+}
 
 export const checkAuthTimeout = (expirationTime) => {
     return {
@@ -40,5 +46,18 @@ export const auth = (email, password, isSignup) => {
         email: email,
         password: password,
         isSignup: isSignup
+    };
+};
+
+export const checkAuthState = () => {
+    return {
+        type: actionTypes.CHECK_AUTH_STATE
+    };
+};
+
+export const setRedirectPathForAuth = ( path ) => {
+    return {
+        type: actionTypes.REDIRECT_PATH_AUTH,
+        path: path
     };
 };

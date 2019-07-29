@@ -49,6 +49,18 @@ const removeItem = (state, action) => {
     }
 }
 
+const addItemStart = (state, action) => {
+    return { ...state, loading: true };
+};
+
+const addItemSuccess = (state, action) => {
+    return { ...state, loading: false, errorInit: false };
+};
+
+const addItemFail = (state, action) => {
+    return { ...state, loading: false, errorInit: true };
+};
+
 const addItem = (state, action) => {
     const updateTaskArray = [...state.taskArray];
     let newItem;
@@ -82,7 +94,7 @@ const addItem = (state, action) => {
   
     return {
         ...state,
-        taskArray: updateTaskArray
+        taskArray: updateTaskArray 
     };
 };
 
@@ -123,8 +135,16 @@ const reducer = (state = initialState, action) => {
             return changeCategory(state, action);
         case actionTypes.REMOVE_ITEM:
             return removeItem(state, action);
-        case actionTypes.ADD_ITEM:
+
+        case actionTypes.ADD_ITEM_START:
+            return addItemStart(state, action);
+        case actionTypes.ADD_ITEM_TO_STATE:
             return addItem(state, action);
+        case actionTypes.ADD_ITEM_SUCCESS:
+            return addItemSuccess(state, action);
+        case actionTypes.ADD_ITEM_FAIL:
+            return addItemFail(state, action);
+            
         case actionTypes.SET_TASK:
             return setTask(state, action);
         case actionTypes.SET_TASK_FAIL:

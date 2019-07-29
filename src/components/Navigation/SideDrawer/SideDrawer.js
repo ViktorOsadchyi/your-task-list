@@ -12,7 +12,10 @@ const sideDrawer = ( props ) => {
         <div className="sideDrawer-menu">
             <div className={attachedClasses.join(' ')} onClick={props.closed}>
                <nav>
-                    <NavigationItems clicked={props.drawerToggleClicked} />
+                    <NavigationItems 
+                        clicked={props.drawerToggleClicked} 
+                        isAuth={props.isAuth}
+                    />
                 </nav>
             </div>
         </div>

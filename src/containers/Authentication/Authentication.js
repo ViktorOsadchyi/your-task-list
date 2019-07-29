@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Input from '../../components/UI/Input/Input';
@@ -60,6 +61,12 @@ class Auth extends Component {
         },
         isSignUp: true,
         formIsValid: false
+    }
+
+    componentDidMount() {
+        if (this.props.authRedirectPath !== '/') {
+            this.props.onSetAuthRedirectPath();
+        } 
     }
 
     checkValidity = (value, rules) => {
@@ -224,15 +231,20 @@ class Auth extends Component {
             ? 'sign up'
             : 'sign in';
 
+        let redirectAuth = null;
+        if (this.props.isAuth) {
+            redirectAuth = <Redirect to={this.props.authRedirectPath} />;
+        } 
+
         return (
             <div className="form-block">
+                {redirectAuth}
                 {errorMessage}
                 <form onSubmit={this.userHandler}>
                     <span className='form-block__title'>{title}</span>
                     {formElems}
                     <div className="form-block__btns">
                         <Button
-                            /*disabled={!this.state.formIsValid}*/
                         >SUBMIT</Button>
                         <input 
                             type='button' 
@@ -248,14 +260,17 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignUp) => dispatch(action.auth(email, password, isSignUp))
+        onAuth: (email, password, isSignUp) => dispatch(action.auth(email, password, isSignUp)),
+        onSetAuthRedirectPath: () => dispatch(action.setRedirectPathForAuth('/'))
     }
 };
 
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuth: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath
     };
 };
 

@@ -42,17 +42,55 @@ export const fetchTaskFail = () => {
     }
 }
 
-export const initTask = () => {
+export const initTask = ( isSignUp, token, userId ) => {
     return {
-        type: actionTypes.TASK_LIST_INIT
+        type: actionTypes.TASK_LIST_INIT,
+        isSignUp: isSignUp,
+        token: token,
+        userId: userId
     };
 };
 
-export const addItem = (task, priority) => {
+export const addItem = (task, priority, token, userId) => {
     return {
         type: actionTypes.ADD_ITEM,
         task: task,
+        priority: priority,
+        token: token,
+        userId: userId
+    };
+};
+
+export const addItemStart = () => {
+    return {
+        type: actionTypes.ADD_ITEM_START
+    }
+}
+
+export const addItemToState = (task, priority) => {
+    return {
+        type: actionTypes.ADD_ITEM_TO_STATE,
+        task: task,
         priority: priority
+    };
+};
+
+export const addItemToDB = (task) => {
+    return {
+        type: actionTypes.ADD_ITEM,
+        task: task
+    };
+};
+
+export const addItemSuccess = () => {
+    return {
+        type: actionTypes.ADD_ITEM_SUCCESS
+    }
+}
+
+export const addItemFail = () => {
+    return {
+        type: actionTypes.ADD_ITEM_FAIL
     }
 }
 

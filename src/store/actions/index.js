@@ -6,7 +6,13 @@ export {
     initTask,
     fetchTaskFail,
     setTask,
-    addItem,setImportantItem
+    addItem,
+    addItemStart,
+    addItemSuccess,
+    addItemFail,
+    addItemToState,
+    addItemToDB,
+    setImportantItem
 } from './taskList';
 export {
     auth,
@@ -14,5 +20,8 @@ export {
     authError,
     authSuccess,
     checkAuthTimeout,
-    logout
+    logout,
+    logoutSuccess,
+    checkAuthState,
+    setRedirectPathForAuth
 } from './auth'

@@ -59,7 +59,7 @@ class TaskCreator extends Component {
         if (!this.props.error) {
             if (this.state.inputValue && this.state.isNum) {
                 this.props.onAddItem(this.state.inputValue, 
-                        this.state.priority, this.props.taskArray);
+                        this.state.priority, this.props.token, this.props.userId);
                 this.setState({inputValue: '', priority: ''});
             }
         }
@@ -106,7 +106,7 @@ class TaskCreator extends Component {
                 </div>
                 <div className="item-form__btn-block">
                     <Button
-                        clickedBtn={() => this.submitHandler}
+                        /*clickedBtn={() => this.submitHandler}*/
                         styleElem="task-creator"
                         disabled={!(this.state.isNum && this.state.isTask)}
                     >Add</Button>
@@ -125,13 +125,16 @@ class TaskCreator extends Component {
 const mapStateToProps = state => {
     return {
         error: state.todo.errorInit,
-        taskArray: state.todo.taskArray
+        taskArray: state.todo.taskArray,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddItem: (task, priority, items) => dispatch(actions.addItem(task, priority, items))
+        onAddItem: (task, priority, items, token, userId) => 
+            dispatch(actions.addItem(task, priority, items, token, userId))
     }
 }
 
