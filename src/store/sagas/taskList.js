@@ -3,26 +3,6 @@ import axios from '../../axios-orders';
 
 import * as actions from '../actions/index';
 
-
-
-function* getTaskArray (action) {
-    const queryParams = 
-        '?auth=' + action.token + '&orderBy="userId"&equalTo="' + action.userId + '"';
-    
-    const response = yield axios
-        .get( '/users.json' + queryParams )
-    const fetchOrders = [];
-    for (let key in response.data) {
-        fetchOrders.push( {
-            ...response.data[key],
-            id: key
-        } );
-    }
-
-    return fetchOrders;
-    
-}
-
 export function* initTaskList (action) {
     try {
         console.log(action.isSignUp);
@@ -75,5 +55,6 @@ function* addItemToDB (action) {
 export function* addItem( action ) {
     yield put(actions.addItemStart());
     yield put(actions.addItemToState(action.task, action.priority));
-    yield addItemToDB(action);
+    if (action.token !== null)
+        yield addItemToDB(action);
 };
